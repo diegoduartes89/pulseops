@@ -12,6 +12,7 @@ SELECT
   mercado,
   COUNT(*) AS oportunidades,
   COUNTIF(estado = 'Ganada') AS oportunidades_ganadas,
+  COUNTIF(estado = 'Perdida') AS oportunidades_perdidas,
   ROUND(SAFE_DIVIDE(COUNTIF(estado = 'Ganada'), COUNT(*)) * 100, 1) AS win_rate_pct,
   ROUND(SAFE_DIVIDE(SUM(IF(estado = 'Ganada', monto, 0)), COUNTIF(estado = 'Ganada')), 2) AS average_deal_value,
   SUM(IF(estado = 'Ganada', monto, 0)) AS revenue_ganado
